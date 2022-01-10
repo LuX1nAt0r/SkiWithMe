@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Icon
@@ -32,6 +33,7 @@ class MainActivity : ComponentActivity() {
                     .fillMaxHeight()
             ) {
                 Greeting()
+                Home()
 
             }
         }
@@ -45,25 +47,63 @@ fun Greeting(
     Row(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(20.dp)
     ) {
-        Column(
-            verticalArrangement = Arrangement.Center
-        ) {
-            Text(
-                text = "Ski with me",
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Bold
-            )
-            Text(text = "Hello, $name")
-        }
-        
+        Text(text = "Hello, $name")
+
         Icon(
             painter = painterResource(id =R.drawable.ic_baseline_menu_24),
             contentDescription = "Menu",
             tint = Color.Black,
             modifier = Modifier.size(24.dp)
         )
+    }
+}
+
+
+@Composable
+fun Home() {
+    Column(
+        Modifier
+            .background(Color.Red)
+            .fillMaxHeight()
+            .fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = "SKI WITH ME",
+            fontSize = 45.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(top = 30.dp)
+        )
+        
+        Spacer(modifier = Modifier.size(30.dp))
+
+        Image(
+            painter = painterResource(id = R.drawable.ic_ski),
+            contentDescription = "Skiing",
+            modifier = Modifier
+                .padding(20.dp)
+                .size(300.dp)
+        )
+    }
+}
+
+
+@Composable
+fun BottomMenu() {
+
+    Box(modifier = Modifier.background(Color.Gray)
+        .padding(20.dp)
+        )
+
+
+    Row (
+        horizontalArrangement = Arrangement.SpaceBetween
+    ){
+
     }
 }
 
@@ -75,6 +115,6 @@ fun Greeting(
 @Composable
 fun DefaultPreview() {
     SkiWithMeTheme {
-        Greeting()
+        Home()
     }
 }
