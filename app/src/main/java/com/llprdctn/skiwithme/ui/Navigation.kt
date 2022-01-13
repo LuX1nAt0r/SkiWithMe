@@ -1,5 +1,6 @@
 package com.llprdctn.skiwithme.ui
 
+import android.content.res.Resources
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -15,6 +16,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.llprdctn.skiwithme.R
+import com.llprdctn.skiwithme.ui.theme.SkiWithMeTheme
 import com.llprdctn.skiwithme.util.BottomNavItem
 
 @Composable
@@ -43,7 +46,7 @@ fun BottomNavigationBar(
     val backStackEntry = navController.currentBackStackEntryAsState()
     BottomNavigation(
         modifier = modifier,
-        backgroundColor = Color.LightGray,
+        backgroundColor = MaterialTheme.colors.primary,
         elevation = 10.dp
     ) {
         items.forEach { item ->
@@ -51,7 +54,7 @@ fun BottomNavigationBar(
             BottomNavigationItem(
                 selected = selected,
                 onClick = { onItemClick(item) },
-                selectedContentColor = Color.Green,
+                selectedContentColor = MaterialTheme.colors.secondary,
                 unselectedContentColor = Color.DarkGray,
                 icon = {
                     Column(horizontalAlignment = CenterHorizontally) {

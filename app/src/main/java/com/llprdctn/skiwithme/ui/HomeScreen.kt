@@ -42,7 +42,7 @@ fun HomeScreen() {
                 .clip(CircleShape)
                 .border(
                     1.5.dp,
-                    MaterialTheme.colors.secondary,
+                    MaterialTheme.colors.primary,
                     CircleShape
                 )
         )
