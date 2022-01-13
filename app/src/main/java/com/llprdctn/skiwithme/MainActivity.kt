@@ -5,15 +5,16 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.End
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
@@ -26,6 +27,7 @@ import com.llprdctn.skiwithme.ui.theme.SkiWithMeTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
             Column(
                 Modifier
@@ -34,6 +36,7 @@ class MainActivity : ComponentActivity() {
             ) {
                 Greeting()
                 Home()
+
 
             }
         }
@@ -62,7 +65,7 @@ fun Greeting(
     }
 }
 
-
+@Preview
 @Composable
 fun Home() {
     Column(
@@ -87,25 +90,40 @@ fun Home() {
             modifier = Modifier
                 .padding(20.dp)
                 .size(300.dp)
+                .clip(CircleShape)
+                .border(
+                    1.5.dp,
+                    MaterialTheme.colors.secondary,
+                    CircleShape
+                )
         )
+
+
     }
 }
 
-
+@Preview
 @Composable
 fun BottomMenu() {
-
-    Box(modifier = Modifier.background(Color.Gray)
-        .padding(20.dp)
+    BottomNavigation(Modifier.fillMaxWidth().height(50.dp)) {
+        Icon(
+            painter = painterResource(id = R.drawable.ic_baseline_menu_24),
+            contentDescription = "Test"
+        )
+        Icon(
+            painter = painterResource(id = R.drawable.ic_baseline_menu_24),
+            contentDescription = "Test"
+        )
+        Icon(
+            painter = painterResource(id = R.drawable.ic_baseline_menu_24),
+            contentDescription = "Test"
         )
 
-
-    Row (
-        horizontalArrangement = Arrangement.SpaceBetween
-    ){
-
     }
+
+
 }
+
 
 
 
@@ -115,6 +133,6 @@ fun BottomMenu() {
 @Composable
 fun DefaultPreview() {
     SkiWithMeTheme {
-        Home()
+
     }
 }
