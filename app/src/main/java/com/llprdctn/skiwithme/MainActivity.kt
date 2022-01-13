@@ -64,7 +64,9 @@ class MainActivity : ComponentActivity() {
                             navController.navigate(it.route)
                         }
                     )
-                }
+                },
+                topBar = { CustomTopBar() }
+
             ) {
                 Navigation(navController = navController)
 
@@ -74,7 +76,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
+@Preview
 @Composable
 fun CustomTopBar(
     name: String = "Lukas"
@@ -84,20 +86,32 @@ fun CustomTopBar(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(20.dp)
-    ) {
-        Text(text = "Hello, $name")
+            .padding(20.dp),
 
-        Icon(
-            painter = painterResource(id =R.drawable.ic_baseline_menu_24),
-            contentDescription = "Menu",
-            tint = Color.Black,
-            modifier = Modifier.size(24.dp)
-        )
+    ) {
+        Text(text = "Hello, $name", fontSize = 20.sp)
+
+        
+
+        Row(
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(text = "-5°C", fontSize = 20.sp)
+
+            Spacer(modifier = Modifier.size(5.dp))
+
+            Icon(
+                painter = painterResource(id =R.drawable.ic_baseline_wb_sunny_24),
+                contentDescription = "Weather",
+                tint = Color.Black,
+                modifier = Modifier.size(36.dp)
+            )
+        }
+        
     }
 }
 
-@Preview
+
 @Composable
 fun Home() {
     Column(
@@ -133,7 +147,7 @@ fun Home() {
     }
 }
 
-@Preview
+
 @Composable
 fun BottomMenu() {
     BottomNavigation(
