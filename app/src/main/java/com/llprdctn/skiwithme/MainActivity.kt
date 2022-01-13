@@ -10,6 +10,11 @@ import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.End
@@ -22,29 +27,56 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
+import com.llprdctn.skiwithme.ui.BottomNavigationBar
+import com.llprdctn.skiwithme.ui.Navigation
 import com.llprdctn.skiwithme.ui.theme.SkiWithMeTheme
 
 class MainActivity : ComponentActivity() {
+    @ExperimentalMaterialApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContent {
-            Column(
-                Modifier
-                    .fillMaxWidth()
-                    .fillMaxHeight()
+            val navController = rememberNavController()
+            Scaffold(
+                bottomBar = {
+                    BottomNavigationBar(
+                        items = listOf(
+                            BottomNavItem(
+                                name = "Home",
+                                route = "home",
+                                icon = Icons.Default.Home
+                            ),
+                            BottomNavItem(
+                                name = "Chat",
+                                route = "chat",
+                                icon = Icons.Default.Notifications
+                            ),
+                            BottomNavItem(
+                                name = "Settings",
+                                route = "settings",
+                                icon = Icons.Default.Settings
+                            )
+                        ),
+                        navController = navController,
+                        onItemClick = {
+                            navController.navigate(it.route)
+                        }
+                    )
+                }
             ) {
-                Greeting()
-                Home()
-
+                Navigation(navController = navController)
 
             }
+
+
         }
     }
 }
 
 @Composable
-fun Greeting(
+fun CustomTopBar(
     name: String = "Lukas"
 ) {
     Row(
@@ -70,9 +102,8 @@ fun Greeting(
 fun Home() {
     Column(
         Modifier
-            .background(Color.Red)
-            .fillMaxHeight()
             .fillMaxWidth(),
+
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
@@ -105,26 +136,37 @@ fun Home() {
 @Preview
 @Composable
 fun BottomMenu() {
-    BottomNavigation(Modifier.fillMaxWidth().height(50.dp)) {
-        Icon(
-            painter = painterResource(id = R.drawable.ic_baseline_menu_24),
-            contentDescription = "Test"
+    BottomNavigation(
+        Modifier
+            .fillMaxWidth()
+            .height(50.dp),
+        backgroundColor = Color.LightGray,
+        elevation = 10.dp,
+    ) {
+        BottomNavigationItem(
+            selected = false,
+            onClick = {  },
+            icon = { Icon(Icons.Filled.Favorite, contentDescription = null)},
+            label = { Text(text = "Test")}
         )
-        Icon(
-            painter = painterResource(id = R.drawable.ic_baseline_menu_24),
-            contentDescription = "Test"
+        BottomNavigationItem(
+            selected = false,
+            onClick = {  },
+            icon = { Icon(Icons.Filled.Favorite, contentDescription = null)},
+            label = { Text(text = "Test")}
         )
-        Icon(
-            painter = painterResource(id = R.drawable.ic_baseline_menu_24),
-            contentDescription = "Test"
+        BottomNavigationItem(
+            selected = false,
+            onClick = {  },
+            icon = { Icon(Icons.Filled.Favorite, contentDescription = null)},
+            label = { Text(text = "Test")}
         )
+
 
     }
 
 
 }
-
-
 
 
 
