@@ -1,4 +1,4 @@
-package com.llprdctn.skiwithme
+package com.llprdctn.skiwithme.util
 
 import androidx.compose.ui.graphics.vector.ImageVector
 
