@@ -19,6 +19,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import com.llprdctn.skiwithme.R
 import com.llprdctn.skiwithme.ui.theme.SkiWithMeTheme
 import com.llprdctn.skiwithme.util.BottomNavItem
+import com.llprdctn.skiwithme.util.SampleData
 
 @Composable
 fun Navigation(navController: NavHostController) {
@@ -27,7 +28,7 @@ fun Navigation(navController: NavHostController) {
             HomeScreen()
         }
         composable("chat") {
-            ChatScreen()
+            ChatScreen(SampleData.conversationSample)
         }
         composable("settings") {
             SettingsScreen()

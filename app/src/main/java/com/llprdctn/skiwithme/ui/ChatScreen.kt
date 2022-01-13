@@ -3,6 +3,7 @@ package com.llprdctn.skiwithme.ui
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
@@ -18,10 +19,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.llprdctn.skiwithme.R
 import com.llprdctn.skiwithme.util.Message
+import com.llprdctn.skiwithme.util.SampleData
 
 @Preview
 @Composable
-fun ChatScreen() {
+fun ChatScreen(messages: List<Message>) {
+
+
+
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -29,12 +35,9 @@ fun ChatScreen() {
         contentAlignment = Alignment.Center
     ) {
         LazyColumn{
-            items(30) { index ->
-                MessageRow(msg = Message(
-                    title = "Chat number: $index",
-                    content = "Skiing"
-                )
-                )
+            items(messages) { item: Message ->
+            MessageRow(msg = item)    
+                
             }
         }
     }
