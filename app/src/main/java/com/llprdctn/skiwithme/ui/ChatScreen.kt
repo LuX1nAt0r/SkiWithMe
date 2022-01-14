@@ -21,7 +21,7 @@ import com.llprdctn.skiwithme.R
 import com.llprdctn.skiwithme.util.Message
 import com.llprdctn.skiwithme.util.SampleData
 
-@Preview
+
 @Composable
 fun ChatScreen(messages: List<Message>) {
 
