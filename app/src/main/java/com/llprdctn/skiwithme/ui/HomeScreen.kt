@@ -45,7 +45,7 @@ fun HomeScreen() {
 
         Spacer(modifier = Modifier.size(30.dp))
 
-        /*Image(
+        Image(
             painter = painterResource(id = R.drawable.ic_ski),
             contentDescription = "Skiing",
             modifier = Modifier
@@ -57,9 +57,9 @@ fun HomeScreen() {
                     MaterialTheme.colors.primary,
                     CircleShape
                 )
-        )*/
+        )
 
-        val vector = ImageVector.vectorResource(id = R.drawable.ic_ski)
+       /* val vector = ImageVector.vectorResource(id = R.drawable.ic_ski)
         val painter = rememberVectorPainter(image = vector)
         
         Canvas(
@@ -79,7 +79,7 @@ fun HomeScreen() {
             )
 
 
-        }
+        }*/
 
 
     }
